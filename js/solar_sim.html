@@ -1,0 +1,38 @@
+<html>
+<head>
+    <script src="numeric-1.2.6.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="coordDiv"></div>
+    <div id="energyDiv"></div>
+
+    <script>
+        console.log("hello world");
+        f = function(t,x) {
+            return [x[1], -x[0]];
+        };
+        sol = numeric.dopri(0,1000,[3,0],f, undefined, 20000);
+        console.log(sol);
+
+        y = [];
+        dy = [];
+        energy = [];
+        for (var i  = 0; i < sol.y.length; i++) {
+            cur_y = sol.y[i][0];
+            y.push(cur_y);
+
+            cur_dy = sol.y[i][1];
+            dy.push(cur_dy);
+
+            energy.push(cur_y*cur_y + cur_dy*cur_dy);
+        }
+
+        var trace1 = {x: sol.x, y: y};
+        var trace2 = {x: sol.x, y: dy};
+        var data = [trace1, trace2];
+        Plotly.newPlot('coordDiv', data);
+        Plotly.newPlot('energyDiv', [{x: sol.x, y: energy}]);
+    </script>
+</body>
+</html>

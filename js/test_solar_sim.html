@@ -1,0 +1,27 @@
+<html>
+<head>
+    <script src="numeric-1.2.6.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="log4javascript.js"></script>
+    <script src="solar_sim.js"></script>
+    <script src="test_solar_sim.js"></script>
+</head>
+<body>
+    <div id="testEarthMoonPositionDiv" style="width:400px; height:400px;"></div>
+    <div id="testCalculateForceDiv" style="width:600px; height:400px;"></div>
+    <script>
+        var logger = log4javascript.getLogger("solarSimLogger");
+        logger.setLevel(log4javascript.Level.DEBUG);
+        var appender = new log4javascript.BrowserConsoleAppender();
+        var layout = new log4javascript.PatternLayout('%-5p %d{HH:mm:ss} %m{1}%n');
+        appender.setLayout(layout);
+        logger.addAppender(appender);
+        logger.debug("log4javascript is working");
+
+        testEarthMoonPosition("testEarthMoonPositionDiv");
+        testCalculateForce("testCalculateForceDiv");
+        testCalculateTotalForce();
+        testParticleDifferential();
+    </script>
+</body>
+</html>

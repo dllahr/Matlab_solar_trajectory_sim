@@ -4,7 +4,7 @@ Some code that uses the ordinary differential equation (ODE) solvers to calculat
 
 original version is written in Matlab
 
-js version use
+js version uses
 * numeric.js  http://numericjs.com/
 * plotly  https://plot.ly/javascript/line-and-scatter/
 
